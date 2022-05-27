@@ -44,6 +44,6 @@
             <Font name="Berlin Sans FB" size="36.0" />
          </font>
       </Text>
-      <Button layoutX="154.0" layoutY="268.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="115.0" style="-fx-background-color: #020731; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bolder; -fx-font-size: 1.50em;" text="Iniciar" />
+      <Button layoutX="154.0" layoutY="268.0" mnemonicParsing="false" onAction="#toRoutesWindow" prefHeight="47.0" prefWidth="115.0" style="-fx-background-color: #020731; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bolder; -fx-font-size: 1.50em;" text="Iniciar" />
    </children>
 </AnchorPane>

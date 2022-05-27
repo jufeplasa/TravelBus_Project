@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="740.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="pane" layoutX="289.0" layoutY="91.0" prefHeight="563.0" prefWidth="451.0" style="-fx-border-color: black;">
+         <children>
+            <ImageView fitHeight="557.0" fitWidth="445.0" layoutX="3.0" layoutY="3.0">
+               <image>
+                  <Image url="@../../resources/Travel_bus_map.png" />
+               </image>
+            </ImageView>
+            <Circle fx:id="Pasto" fill="#ff0505" layoutX="156.0" layoutY="462.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Tumaco" fill="#ff0505" layoutX="37.0" layoutY="426.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Ipiales" fill="#ff0505" layoutX="140.0" layoutY="486.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Chachagui" fill="#ff0505" layoutX="155.0" layoutY="452.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Ricaurte" fill="#ff0505" layoutX="101.0" layoutY="457.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Sandona" fill="#ff0505" layoutX="139.0" layoutY="457.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Mocoa" fill="#ff0505" layoutX="197.0" layoutY="457.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Sibundoy" fill="#ff0505" layoutX="178.0" layoutY="457.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Puerto_Guzman" fill="#ff0505" layoutX="212.0" layoutY="471.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Puerta_Asis" fill="#ff0505" layoutX="211.0" layoutY="495.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="La_Hormiga" fill="#ff0505" layoutX="173.0" layoutY="494.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Puerto_Asis" fill="#ff0505" layoutX="196.0" layoutY="470.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Cali" fill="#ff0505" layoutX="210.0" layoutY="326.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Yumbo" fill="#ff0505" layoutX="214.0" layoutY="316.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Palmira" fill="#ff0505" layoutX="225.0" layoutY="320.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Buga" fill="#ff0505" layoutX="243.0" layoutY="306.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Tulua" fill="#ff0505" layoutX="242.0" layoutY="286.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Florida" fill="#ff0505" layoutX="241.0" layoutY="330.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Cartago" fill="#ff0505" layoutX="252.0" layoutY="252.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Trujillo" fill="#ff0505" layoutX="220.0" layoutY="281.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Popayan" fill="#ff0505" layoutX="201.0" layoutY="385.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Suarez" fill="#ff0505" layoutX="195.0" layoutY="354.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="El_Tambo" fill="#ff0505" layoutX="177.0" layoutY="380.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Timbiqui" fill="#ff0505" layoutX="118.0" layoutY="363.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Cajibio" fill="#ff0505" layoutX="201.0" layoutY="375.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="La_Vega" fill="#ff0505" layoutX="192.0" layoutY="416.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Piamonte" fill="#ff0505" layoutX="225.0" layoutY="461.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Neiva" fill="#ff0505" layoutX="310.0" layoutY="353.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Pitalito" fill="#ff0505" layoutX="241.0" layoutY="415.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="La_Plata" fill="#ff0505" layoutX="256.0" layoutY="389.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Tarqui" fill="#ff0505" layoutX="255.0" layoutY="406.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Teruel" fill="#ff0505" layoutX="282.0" layoutY="370.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Nataga" fill="#ff0505" layoutX="272.0" layoutY="380.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Palermo" fill="#ff0505" layoutX="295.0" layoutY="362.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Pereira" fill="#ff0505" layoutX="276.0" layoutY="247.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Santa_Rosa_de_Cabal" fill="#ff0505" layoutX="290.0" layoutY="246.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Mistrato" fill="#ff0505" layoutX="254.0" layoutY="216.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Pueblo_Rico" fill="#ff0505" layoutX="245.0" layoutY="220.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Apia" fill="#ff0505" layoutX="255.0" layoutY="228.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Salento" fill="#ff0505" layoutX="285.0" layoutY="258.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Filandia" fill="#ff0505" layoutX="274.0" layoutY="257.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Circasia" fill="#ff0505" layoutX="277.0" layoutY="266.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Armenia" fill="#ff0505" layoutX="273.0" layoutY="274.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Calarca" fill="#ff0505" layoutX="281.5" layoutY="275.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Medellin" fill="#ff0505" layoutX="273.0" layoutY="160.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Turbo" fill="#ff0505" layoutX="200.0" layoutY="52.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Zaragoza" fill="#ff0505" layoutX="340.0" layoutY="88.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Toledo" fill="#ff0505" layoutX="272.0" layoutY="122.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Ituango" fill="#ff0505" layoutX="259.0" layoutY="112.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="Chigorodo" fill="#ff0505" layoutX="201.0" layoutY="83.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="83.0" fitWidth="740.0">
+         <image>
+            <Image url="@../../../../../Pictures/AppsPictures/jsja.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="313.0" layoutX="404.0" layoutY="12.0" nodeOrientation="INHERIT">
+         <image>
+            <Image url="@../../../../../Pictures/AppsPictures/Transportadora%201A%20(2).png" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="14.0" layoutY="148.0" prefHeight="53.0" prefWidth="248.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ComboBox fx:id="cmbxChooseOriginDepartment" prefWidth="150.0" promptText="Departamento">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox fx:id="cmbxChooseOrigin" disable="true" prefWidth="150.0" promptText="Seleccione" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </ComboBox>
+         </children>
+      </GridPane>
+      <Text layoutX="97.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Origen:">
+         <font>
+            <Font name="Berlin Sans FB" size="27.0" />
+         </font>
+      </Text>
+      <Text layoutX="94.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destino:">
+         <font>
+            <Font name="Berlin Sans FB" size="27.0" />
+         </font>
+      </Text>
+      <GridPane layoutX="14.0" layoutY="265.0" prefHeight="53.0" prefWidth="248.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ComboBox fx:id="cmbxChooseDestinationDepartment" prefWidth="150.0" promptText="Departamento">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox fx:id="cmbxChooseDestination" disable="true" prefWidth="150.0" promptText="Seleccione" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </ComboBox>
+         </children>
+      </GridPane>
+      <GridPane layoutX="38.0" layoutY="371.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calcular ruta más rápida:" textAlignment="CENTER" wrappingWidth="92.5">
+               <font>
+                  <Font name="Berlin Sans FB" size="16.0" />
+               </font>
+            </Text>
+            <Button mnemonicParsing="false" onAction="#calculateFastestRoute" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #020731; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bolder; -fx-font-size: 1.25em;" text="Calcular" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+      <GridPane layoutX="21.0" layoutY="442.0" prefHeight="30.0" prefWidth="235.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calcular ruta más económica:" textAlignment="CENTER" wrappingWidth="114.5">
+               <font>
+                  <Font name="Berlin Sans FB" size="16.0" />
+               </font>
+            </Text>
+            <Button mnemonicParsing="false" onAction="#calculateCheapestRoute" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #020731; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bolder; -fx-font-size: 1.25em;" text="Calcular" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
