@@ -75,16 +75,6 @@
             <Circle fx:id="Chigorodo" fill="#ff0505" layoutX="201.0" layoutY="83.0" radius="4.3" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>
-      <ImageView fitHeight="83.0" fitWidth="740.0">
-         <image>
-            <Image url="@../../../../../Pictures/AppsPictures/jsja.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="313.0" layoutX="404.0" layoutY="12.0" nodeOrientation="INHERIT">
-         <image>
-            <Image url="@../../../../../Pictures/AppsPictures/Transportadora%201A%20(2).png" />
-         </image>
-      </ImageView>
       <GridPane layoutX="14.0" layoutY="148.0" prefHeight="53.0" prefWidth="248.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -179,5 +169,15 @@
             </Button>
          </children>
       </GridPane>
+      <ImageView fitHeight="77.0" fitWidth="740.0">
+         <image>
+            <Image url="@../../resources/FondoAzul.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="286.0" layoutX="430.0" layoutY="12.0">
+         <image>
+            <Image url="@../../resources/Transportadora%201A%20(2).png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
