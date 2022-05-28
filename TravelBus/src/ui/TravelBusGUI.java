@@ -49,7 +49,7 @@ public class TravelBusGUI {
 	@FXML
 	public void toRoutesWindow(ActionEvent event) throws IOException {
 
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Routes.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MapRoutes.fxml"));
 		fxmlLoader.setController(this);
 		Parent root = fxmlLoader.load();
 		Scene scene = new Scene(root);
