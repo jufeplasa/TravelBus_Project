@@ -14,7 +14,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.AudioClip;
@@ -53,6 +55,19 @@ public class TravelBusGUI {
 
     @FXML
     private ComboBox<String> cmbxChooseDestination;
+    
+    @FXML
+    private TextField txtUsername;
+
+    @FXML
+    private DatePicker dpTravelDate;
+
+    @FXML
+    private Label ticketOrigin;
+
+    @FXML
+    private Label tichetDestiny;
+
     
     List<String> citiesOfAntioquia;
     List<String> citiesOfCauca;
@@ -271,9 +286,20 @@ public class TravelBusGUI {
 		destiny.setFill(Color.RED);
 	}
 
+	
+	
 	@FXML
-	public void toBuyTicketWindow(ActionEvent event) {
+	public void toBuyTicketWindow(ActionEvent event) throws IOException {
+		AudioClip sound = new AudioClip("file:resources/sounds/click.mp3");
+		sound.play();
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Sales.fxml"));
+		fxmlLoader.setController(this);
+		Parent root = fxmlLoader.load();
+		Scene scene = new Scene(root);
 
+		mainStage.setScene(scene);
+		mainStage.show();
 	}
 	
 	public Circle circleId(String id) {
@@ -290,6 +316,26 @@ public class TravelBusGUI {
 			}
 		}
 		return circle;
+	}
+	
+	@FXML
+	public void buyTickey(ActionEvent event) {
+
+	}
+
+	
+	@FXML
+	public void cancelPurchase(ActionEvent event) throws IOException {
+		AudioClip sound = new AudioClip("file:resources/sounds/click.mp3");
+		sound.play();
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MapRoutes.fxml"));
+		fxmlLoader.setController(this);
+		Parent root = fxmlLoader.load();
+		Scene scene = new Scene(root);
+
+		mainStage.setScene(scene);
+		mainStage.show();
 	}
 
 	public void errorAlert(String message) {
