@@ -12,37 +12,31 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+<<<<<<< Updated upstream
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+=======
+import javafx.scene.layout.Pane;
+>>>>>>> Stashed changes
 import javafx.scene.media.AudioClip;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class TravelBusGUI {
 	private Stage mainStage;
-	
-	
+
 	@FXML
-    private AnchorPane pane;
+	Pane pane;
 	
 	@FXML
 	Circle origin;
 	
 	@FXML
 	Circle destiny;
-	
-	@FXML
-    private Label labelOrigin;
-
-    @FXML
-    private Label labelDestination;
-
 	
 	@FXML
     private ComboBox<String> cmbxChooseOriginDepartment;
@@ -77,7 +71,7 @@ public class TravelBusGUI {
     List<String> citiesOfQuindio;
     List<String> citiesOfRisaralda;
     List<String> citiesOfValle;
-    List<String> totalCities;
+ 
 
     
     public TravelBusGUI() {
@@ -89,21 +83,7 @@ public class TravelBusGUI {
     	citiesOfQuindio = new ArrayList<String>( Arrays.asList("Armenia","Calarca","Circasia","Filandia","Salento") );
     	citiesOfRisaralda = new ArrayList<String>( Arrays.asList("Apia","Mistrato","Pereira","Pueblo Rico","Santa Rosa de Cabal") );
     	citiesOfValle = new ArrayList<String>( Arrays.asList("Cali","Cartago","Buga","Florida","Palmira","Trujillo","Tulua","Yumbo") );
-    	totalCities = new ArrayList<String>();
     	
-    	totalCities.addAll(citiesOfAntioquia);
-    	totalCities.addAll(citiesOfCauca);
-    	totalCities.addAll(citiesOfHuila);
-    	totalCities.addAll(citiesOfNarinio);
-    	totalCities.addAll(citiesOfPutumayo);
-    	totalCities.addAll(citiesOfQuindio);
-    	totalCities.addAll(citiesOfRisaralda);
-    	totalCities.addAll(citiesOfValle);
-    	
-    	origin = new Circle();
-		destiny = new Circle();
-		pane = new AnchorPane();
-	
     }
     
 	public Stage getMainStage() {
@@ -127,6 +107,7 @@ public class TravelBusGUI {
 		mainStage.setScene(scene);
 		mainStage.show();
 		initializeComboBoxOfDepartments();
+	
 	}
 	
 
@@ -170,6 +151,8 @@ public class TravelBusGUI {
 		eventOrigin();
 		eventDestination();
 	}
+	
+	
 	
 	public void eventOrigin() {
 		cmbxChooseOriginDepartment.setOnAction(e -> cmbxChooseOrigin.setItems(observableList(cmbxChooseOriginDepartment)) );
@@ -231,47 +214,8 @@ public class TravelBusGUI {
 			return null;
 		}
 	}
-
-
 	
-	@FXML
-	public void selectOrigin() {
-		AudioClip sound = new AudioClip("file:resources/sounds/click.mp3");
-		sound.play();
-
-		if (cmbxChooseOrigin.getSelectionModel().getSelectedItem() != null) {
-			System.out.println("El usuario entra a escoger el origen");
-			Circle c = (Circle) pane.lookup("#" + cmbxChooseOrigin.getSelectionModel().getSelectedItem());
-			origin.setFill(Color.RED);
-			origin = c;
-			origin.setFill(Color.BLUE);
-			labelOrigin.setText(c.getId());
-		} else {
-			String message = " Please select your origin node.\nYou have to select it from the menu";
-			errorAlert(message);
-		}
-
-	}
-
-	@FXML
-	public void selectDestiny() {
-		AudioClip sound = new AudioClip("file:resources/sounds/click.mp3");
-		sound.play();
-
-		if (cmbxChooseDestination.getSelectionModel().getSelectedItem() != null) {
-			System.out.println("El usuario entra a escoger el destino");
-			Circle c = (Circle) pane.lookup("#" + cmbxChooseDestination.getSelectionModel().getSelectedItem());
-			destiny.setFill(Color.RED);
-			destiny = c;
-			destiny.setFill(Color.BLUE);
-			labelDestination.setText(c.getId());
-		} else {
-			String message = " Please select your destination node.\nYou have to select it from the menu";
-			errorAlert(message);
-		}
-
-	}
-	
+<<<<<<< Updated upstream
 	@FXML
 	public void deleteRoute(ActionEvent event) {
 		cmbxChooseOriginDepartment.getSelectionModel().clearSelection();
@@ -346,4 +290,6 @@ public class TravelBusGUI {
 		alert.show();
 	}
 
+=======
+>>>>>>> Stashed changes
 }
