@@ -92,6 +92,16 @@ public class TravelBus {
 		}
 	}
 	
+	public ArrayList<String> getCityByDep(String departamento){
+		ArrayList<String> cities=new ArrayList<String>();
+		for(int i=0;i<dataCiudadesList.size();i++) {
+			if(htCD.get(dataCiudadesList.get(i)).equals(departamento)) {
+				cities.add(dataCiudadesList.get(i));
+			}
+		}
+		return cities;
+	}
+	
 	public Ciudad crearCiudad(String nombreC, int index) {
 		String departamento=htCD.get(nombreC);
 		Ciudad city=new Ciudad(nombreC,departamento,dataDistancias.get(index),dataCiudadesList);
@@ -99,6 +109,7 @@ public class TravelBus {
 	}
 	
 	public  ArrayList<ArrayList<String>> distancias() {
+		
 		return dataDistancias;
 	}
 	

@@ -83,14 +83,14 @@ public class TravelBusGUI {
     
     public TravelBusGUI() {
     	travel=new TravelBus();
-    	citiesOfAntioquia = new ArrayList<String>( Arrays.asList("Chigorodo","Ituango","Medellin","Toledo","Turbo","Zaragoza") );
-    	citiesOfCauca = new ArrayList<String>( Arrays.asList("Cajibio","El Tambo","La Vega","Morales","Piamonte","Popayan","Timbiqui") );
-    	citiesOfHuila = new ArrayList<String>( Arrays.asList("La Plata","Nataga","Neiva","Palermo","Pitalito","Tarqui","Teruel") );
-    	citiesOfNarinio = new ArrayList<String>( Arrays.asList("Chachagui","Ipiales","Pasto","Ricaurte","Sandona","Tumaco") );
-    	citiesOfPutumayo = new ArrayList<String>( Arrays.asList("La Hormiga","Mocoa","Puerto Asis","Puerto Guzman","Sibundoy","Villa Garzon") );
-    	citiesOfQuindio = new ArrayList<String>( Arrays.asList("Armenia","Calarca","Circasia","Filandia","Salento") );
-    	citiesOfRisaralda = new ArrayList<String>( Arrays.asList("Apia","Mistrato","Pereira","Pueblo Rico","Santa Rosa de Cabal") );
-    	citiesOfValle = new ArrayList<String>( Arrays.asList("Cali","Cartago","Buga","Florida","Palmira","Trujillo","Tulua","Yumbo") );
+    	citiesOfAntioquia = travel.getCityByDep("Antioquia");
+    	citiesOfCauca =travel.getCityByDep("Cauca");
+    	citiesOfHuila = travel.getCityByDep("Huila");
+    	citiesOfNarinio =travel.getCityByDep("Nariño");
+    	citiesOfPutumayo = travel.getCityByDep("Putumayo");
+    	citiesOfQuindio = travel.getCityByDep("Quindio");
+    	citiesOfRisaralda =travel.getCityByDep("Risaralda");
+    	citiesOfValle =travel.getCityByDep("Valle del Cauca");
     	totalCities = new ArrayList<String>();
     	
 
@@ -149,23 +149,7 @@ public class TravelBusGUI {
 	public void initializeComboBoxOfDepartments() {
 		List<String> departments = new ArrayList<String>();
 
-		String department1 = "Antioquia";
-		String department2 = "Cauca";
-		String department3 = "Huila";
-		String department4 = "Nariño";
-		String department5 = "Putumayo";
-		String department6 = "Quindío";
-		String department7 = "Risaralda";
-		String department8 = "Valle del Cauca";
-
-		departments.add(department1);
-		departments.add(department2);
-		departments.add(department3);
-		departments.add(department4);
-		departments.add(department5);
-		departments.add(department6);
-		departments.add(department7);
-		departments.add(department8);
+		departments=travel.departamentos();
 
 		ObservableList<String> observableList = FXCollections.observableArrayList(departments);
 		cmbxChooseOriginDepartment.setItems(observableList);
