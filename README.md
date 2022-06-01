@@ -5,5 +5,6 @@ The Transport company ***"Trasnportadora 1A"***, is a company that has emerged d
 - Show the total sales.
 - Update the most common destination.
 - Show a user table list of sales.
-***
+---
 ![Error al cargar](TravelBus_Project/TravelBus/resources/Transportadora 1A (2).png)
+---
