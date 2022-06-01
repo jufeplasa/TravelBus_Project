@@ -24,9 +24,11 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.shape.Circle;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import model.TravelBus;
 
 public class TravelBusGUI {
 	private Stage mainStage;
+	private TravelBus travel;
 
 	@FXML
     private AnchorPane pane;
@@ -80,6 +82,7 @@ public class TravelBusGUI {
 
     
     public TravelBusGUI() {
+    	travel=new TravelBus();
     	citiesOfAntioquia = new ArrayList<String>( Arrays.asList("Chigorodo","Ituango","Medellin","Toledo","Turbo","Zaragoza") );
     	citiesOfCauca = new ArrayList<String>( Arrays.asList("Cajibio","El Tambo","La Vega","Morales","Piamonte","Popayan","Timbiqui") );
     	citiesOfHuila = new ArrayList<String>( Arrays.asList("La Plata","Nataga","Neiva","Palermo","Pitalito","Tarqui","Teruel") );
@@ -334,6 +337,7 @@ public class TravelBusGUI {
 		Scene scene = new Scene(root);
 
 		mainStage.setScene(scene);
+		initializeComboBoxOfDepartments();
 		mainStage.show();
 	}
 
