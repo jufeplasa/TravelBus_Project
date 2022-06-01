@@ -201,7 +201,7 @@ public class TravelBusGUI {
 				observableList = FXCollections.observableArrayList(citiesOfPutumayo);
 				return observableList;
 			}
-			else if(comboBox.getSelectionModel().getSelectedItem().equals("Quindío")) {
+			else if(comboBox.getSelectionModel().getSelectedItem().equals("Quindio")) {
 				observableList = FXCollections.observableArrayList(citiesOfQuindio);
 				return observableList;
 			}
@@ -226,7 +226,6 @@ public class TravelBusGUI {
 		sound.play();
 
 		if (cmbxChooseOrigin.getSelectionModel().getSelectedItem() != null) {
-			System.out.println("El usuario entra a escoger el origen");
 			Circle c = (Circle) pane.lookup("#" + cmbxChooseOrigin.getSelectionModel().getSelectedItem());
 			origin.setFill(Color.RED);
 			origin = c;
@@ -245,8 +244,7 @@ public class TravelBusGUI {
 		sound.play();
 
 		if (cmbxChooseDestination.getSelectionModel().getSelectedItem() != null) {
-			System.out.println("El usuario entra a escoger el destino");
-			Circle c = (Circle) pane.lookup("#" + cmbxChooseDestination.getSelectionModel().getSelectedItem());
+			Circle c = (Circle) pane.lookup("#"+cmbxChooseDestination.getSelectionModel().getSelectedItem());
 			destiny.setFill(Color.RED);
 			destiny = c;
 			destiny.setFill(Color.BLUE);

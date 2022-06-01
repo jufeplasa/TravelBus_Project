@@ -30,6 +30,7 @@ public class TravelBus {
 		dataDistancias=leerArchivo(DATADISTANCIA);
 		leerCyD(DATACIUDADES);
 		crearciudadesList();
+		 crearAristas();
 		//dataCostos=leerArchivo(DATACOSTOS);
 	}
 	
@@ -104,8 +105,14 @@ public class TravelBus {
 	
 	public Ciudad crearCiudad(String nombreC, int index) {
 		String departamento=htCD.get(nombreC);
-		Ciudad city=new Ciudad(nombreC,departamento,dataDistancias.get(index),dataCiudadesList);
+		Ciudad city=new Ciudad(nombreC,departamento);
 		return city;
+	}
+	
+	public void crearAristas() {
+		for(int i=0;i<ciudadesList.size();i++) {
+			ciudadesList.get(i).addAristas(ciudadesList, dataDistancias.get(i));
+		}
 	}
 	
 	public  ArrayList<ArrayList<String>> distancias() {
