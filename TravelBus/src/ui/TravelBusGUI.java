@@ -142,7 +142,7 @@ public class TravelBusGUI {
 	
 	@FXML
 	public void calculateFastestRoute(ActionEvent event) {
-		
+	
 	}
 	
 	

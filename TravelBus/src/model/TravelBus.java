@@ -14,6 +14,7 @@ public class TravelBus {
 	private static final String DATACOSTOS="src/data/costos.csv";
 	
 	private ArrayList<ArrayList<String>> dataDistancias;
+	private ArrayList<ArrayList<Integer>> distancia;
 	private ArrayList<String> dataCiudadesList;
 	private ArrayList<Ciudad> ciudadesList;
 	private ArrayList<String> departmentList;
@@ -23,6 +24,7 @@ public class TravelBus {
 	public TravelBus() {
 		dataDistancias=new ArrayList<ArrayList<String>>();
 		dataCiudadesList=new ArrayList<String>();
+		distancia=new ArrayList<ArrayList<Integer>> ();
 		ciudadesList=new ArrayList<Ciudad>();
 		departmentList=new ArrayList<String>();
 		htCD=new Hashtable<String, String>();
@@ -30,7 +32,7 @@ public class TravelBus {
 		dataDistancias=leerArchivo(DATADISTANCIA);
 		leerCyD(DATACIUDADES);
 		crearciudadesList();
-		 crearAristas();
+		crearMatrizD();
 		//dataCostos=leerArchivo(DATACOSTOS);
 	}
 	
@@ -49,11 +51,27 @@ public class TravelBus {
 				data.add(temp);
 			}
 		} catch (Exception e) {
-			//e.printStackTrace();
 		}
-		//System.out.println(data);
 		return data;
 	}
+	
+	public void crearMatrizD() {
+		for(int i=0;i<dataDistancias.size();i++) {
+			ArrayList<Integer> temp = new ArrayList<>();
+			for(int j=0;j<dataDistancias.get(i).size();j++) {
+				String num=dataDistancias.get(i).get(j);
+				if(num.isEmpty()||num.equals(" ")) {
+					temp.add(99999);
+				}
+				else {
+					temp.add(Integer.parseInt(num));
+				}
+			}
+			distancia.add(temp);
+		}
+	}
+	
+	
 	
 	public  void leerCyD(String nameFile) {
 		
@@ -84,6 +102,8 @@ public class TravelBus {
 		return repeat;
 	}
 	
+	
+	
 	public void crearciudadesList() {
 		for (int i=0;i<dataCiudadesList.size();i++) {
 			Ciudad nCiudad=crearCiudad(dataCiudadesList.get(i),i);
@@ -109,16 +129,12 @@ public class TravelBus {
 		return city;
 	}
 	
-	public void crearAristas() {
-		for(int i=0;i<ciudadesList.size();i++) {
-			ciudadesList.get(i).addAristas(ciudadesList, dataDistancias.get(i));
-		}
+	public  ArrayList<ArrayList<Integer>> distancias() {
+		
+		return distancia;
 	}
 	
-	public  ArrayList<ArrayList<String>> distancias() {
-		
-		return dataDistancias;
-	}
+	
 	
 	public Hashtable<String, String> departCiudad() {
 		return htCD;
