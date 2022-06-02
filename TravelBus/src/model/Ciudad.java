@@ -30,7 +30,7 @@ public class Ciudad {
 	
 	
 	public String toString() {
-		return ciudad+" "+departamento;
+		return ciudad;
 	}
 	
 }

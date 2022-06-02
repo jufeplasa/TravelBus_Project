@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Stack;
 
 public class TravelBus {
 	//private static Hashtable<Ciudades, Double> hTCostos;
@@ -19,6 +20,7 @@ public class TravelBus {
 	private ArrayList<Ciudad> ciudadesList;
 	private ArrayList<String> departmentList;
 	private Hashtable<String, String> htCD;
+	private Stack<Ciudad> recorrido;
 	//private ArrayList<ArrayList<String>> dataCostos;
 	
 	public TravelBus() {
@@ -28,6 +30,7 @@ public class TravelBus {
 		ciudadesList=new ArrayList<Ciudad>();
 		departmentList=new ArrayList<String>();
 		htCD=new Hashtable<String, String>();
+		setRecorrido(new Stack<Ciudad>());
 		//dataCostos=new ArrayList<ArrayList<String>>();
 		dataDistancias=leerArchivo(DATADISTANCIA);
 		leerCyD(DATACIUDADES);
@@ -51,7 +54,9 @@ public class TravelBus {
 				data.add(temp);
 			}
 		} catch (Exception e) {
+			//e.printStackTrace();
 		}
+		//System.out.println(data);
 		return data;
 	}
 	
@@ -102,7 +107,32 @@ public class TravelBus {
 		return repeat;
 	}
 	
+	public void establecerRuta(String origin, String destiny){
+		int indexO=getIndexCity(origin);
+		int indexD=getIndexCity(destiny);
+		int valueDistance=distancia.get(indexO).get(indexD);
+		
+		for(int i=0;i<distancia.get(indexO).size();i++) {
+			int value=distancia.get(indexO).get(i)+distancia.get(i).get(indexD);
+			if(value<valueDistance) {
+				valueDistance=value;
+				recorrido.push(ciudadesList.get(i));
+			}
+		}
+		
+	}
 	
+	public int getIndexCity(String cityName) {
+		boolean found=false;
+		int index=0;
+		for(int i=0;i<ciudadesList.size()&&!found;i++) {
+			if(ciudadesList.get(i).getCiudad().equals(cityName)) {
+				index=i;
+				found=true;
+			}
+		}
+		return index;
+	}
 	
 	public void crearciudadesList() {
 		for (int i=0;i<dataCiudadesList.size();i++) {
@@ -150,6 +180,14 @@ public class TravelBus {
 	}
 	public  ArrayList<String> departamentos() {
 		return departmentList;
+	}
+
+	public Stack<Ciudad> getRecorrido() {
+		return recorrido;
+	}
+
+	public void setRecorrido(Stack<Ciudad> recorrido) {
+		this.recorrido = recorrido;
 	}
 	
 }
