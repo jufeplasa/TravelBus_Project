@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +25,7 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.shape.Circle;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import model.Ciudad;
 import model.TravelBus;
 
 public class TravelBusGUI {
@@ -31,83 +33,83 @@ public class TravelBusGUI {
 	private TravelBus travel;
 
 	@FXML
-    private AnchorPane pane;
-	
+	private AnchorPane pane;
+
 	@FXML
 	Circle origin;
-	
+
 	@FXML
 	Circle destiny;
-	
+
 	@FXML
-    private Label labelOrigin;
+	private Label labelOrigin;
 
-    @FXML
-    private Label labelDestination;
-	
 	@FXML
-    private ComboBox<String> cmbxChooseOriginDepartment;
+	private Label labelDestination;
 
-    @FXML
-    private ComboBox<String> cmbxChooseOrigin;
+	@FXML
+	private ComboBox<String> cmbxChooseOriginDepartment;
 
-    @FXML
-    private ComboBox<String> cmbxChooseDestinationDepartment;
+	@FXML
+	private ComboBox<String> cmbxChooseOrigin;
 
-    @FXML
-    private ComboBox<String> cmbxChooseDestination;
-    
-    @FXML
-    private TextField txtUsername;
+	@FXML
+	private ComboBox<String> cmbxChooseDestinationDepartment;
 
-    @FXML
-    private DatePicker dpTravelDate;
+	@FXML
+	private ComboBox<String> cmbxChooseDestination;
 
-    @FXML
-    private Label ticketOrigin;
+	@FXML
+	private TextField txtUsername;
 
-    @FXML
-    private Label tichetDestiny;
+	@FXML
+	private DatePicker dpTravelDate;
 
-    
-    List<String> citiesOfAntioquia;
-    List<String> citiesOfCauca;
-    List<String> citiesOfHuila;
-    List<String> citiesOfNarinio;
-    List<String> citiesOfPutumayo;
-    List<String> citiesOfQuindio;
-    List<String> citiesOfRisaralda;
-    List<String> citiesOfValle;
-    List<String> totalCities;
+	@FXML
+	private Label ticketOrigin;
 
-    
-    public TravelBusGUI() {
-    	travel=new TravelBus();
-    	citiesOfAntioquia = travel.getCityByDep("Antioquia");
-    	citiesOfCauca =travel.getCityByDep("Cauca");
-    	citiesOfHuila = travel.getCityByDep("Huila");
-    	citiesOfNarinio =travel.getCityByDep("Nariño");
-    	citiesOfPutumayo = travel.getCityByDep("Putumayo");
-    	citiesOfQuindio = travel.getCityByDep("Quindio");
-    	citiesOfRisaralda =travel.getCityByDep("Risaralda");
-    	citiesOfValle =travel.getCityByDep("Valle del Cauca");
-    	totalCities = new ArrayList<String>();
-    	
+	@FXML
+	private Label tichetDestiny;
 
-    	totalCities.addAll(citiesOfAntioquia);
-    	totalCities.addAll(citiesOfCauca);
-    	totalCities.addAll(citiesOfHuila);
-    	totalCities.addAll(citiesOfNarinio);
-    	totalCities.addAll(citiesOfPutumayo);
-    	totalCities.addAll(citiesOfQuindio);
-    	totalCities.addAll(citiesOfRisaralda);
-    	totalCities.addAll(citiesOfValle);
-    	
-    	origin = new Circle();
+
+	List<String> citiesOfAntioquia;
+	List<String> citiesOfCauca;
+	List<String> citiesOfHuila;
+	List<String> citiesOfNarinio;
+	List<String> citiesOfPutumayo;
+	List<String> citiesOfQuindio;
+	List<String> citiesOfRisaralda;
+	List<String> citiesOfValle;
+	List<String> totalCities;
+
+
+	public TravelBusGUI() {
+		travel=new TravelBus();
+		citiesOfAntioquia = travel.getCityByDep("Antioquia");
+		citiesOfCauca =travel.getCityByDep("Cauca");
+		citiesOfHuila = travel.getCityByDep("Huila");
+		citiesOfNarinio =travel.getCityByDep("Nariño");
+		citiesOfPutumayo = travel.getCityByDep("Putumayo");
+		citiesOfQuindio = travel.getCityByDep("Quindio");
+		citiesOfRisaralda =travel.getCityByDep("Risaralda");
+		citiesOfValle =travel.getCityByDep("Valle del Cauca");
+		totalCities = new ArrayList<String>();
+
+
+		totalCities.addAll(citiesOfAntioquia);
+		totalCities.addAll(citiesOfCauca);
+		totalCities.addAll(citiesOfHuila);
+		totalCities.addAll(citiesOfNarinio);
+		totalCities.addAll(citiesOfPutumayo);
+		totalCities.addAll(citiesOfQuindio);
+		totalCities.addAll(citiesOfRisaralda);
+		totalCities.addAll(citiesOfValle);
+
+		origin = new Circle();
 		destiny = new Circle();
 		pane = new AnchorPane();
-    }
-    
+	}
+
 	public Stage getMainStage() {
 		return mainStage;
 	}
@@ -120,7 +122,7 @@ public class TravelBusGUI {
 	public void toRoutesWindow(ActionEvent event) throws IOException {
 		AudioClip sound = new AudioClip("file:resources/sounds/click.mp3");
 		sound.play();
-		
+
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MapRoutes.fxml"));
 		fxmlLoader.setController(this);
 		Parent root = fxmlLoader.load();
@@ -129,23 +131,33 @@ public class TravelBusGUI {
 		mainStage.setScene(scene);
 		mainStage.show();
 		initializeComboBoxOfDepartments();
-	
+
 	}
-	
+
 
 	@FXML
 	public void calculateCheapestRoute(ActionEvent event) {
-		
+
 	}
 
-	
-	
+
+
 	@FXML
 	public void calculateFastestRoute(ActionEvent event) {
-	
+		String origen=cmbxChooseOrigin.getSelectionModel().getSelectedItem();
+		String destino=cmbxChooseDestination.getSelectionModel().getSelectedItem();
+		int indexOrigen=travel.getIndexCity(origen);
+		int indexDestino=travel.getIndexCity(destino);
+		Stack<Ciudad> rutaTemp=travel.rutaDijkstra(indexOrigen,indexDestino);
+		for(int i=0;i<rutaTemp.size();i++) {
+			Circle c = (Circle) pane.lookup("#" + rutaTemp.get(i).getCiudad());
+			origin = c;
+			origin.setFill(Color.BLUEVIOLET);
+			labelOrigin.setText(c.getId());
+		}
 	}
-	
-	
+
+
 	public void initializeComboBoxOfDepartments() {
 		List<String> departments = new ArrayList<String>();
 
@@ -157,28 +169,28 @@ public class TravelBusGUI {
 		eventOrigin();
 		eventDestination();
 	}
-	
-	
-	
+
+
+
 	public void eventOrigin() {
 		cmbxChooseOriginDepartment.setOnAction(e -> cmbxChooseOrigin.setItems(observableList(cmbxChooseOriginDepartment)) );
 
 		cmbxChooseOriginDepartment.valueProperty().addListener((ov, p1, p2) -> {
-		    //System.out.println("Nueva Selección: " + p2);
-		   // System.out.println("Vieja Selección: " + p1);
+			//System.out.println("Nueva Selección: " + p2);
+			// System.out.println("Vieja Selección: " + p1);
 		});
 	}
-	
+
 	public void eventDestination() {
 		cmbxChooseDestinationDepartment.setOnAction(e -> cmbxChooseDestination.setItems(observableList(cmbxChooseDestinationDepartment)) );
 
 		cmbxChooseDestinationDepartment.valueProperty().addListener((ov, p1, p2) -> {
-		    //System.out.println("Nueva Selección: " + p2);
-		   // System.out.println("Vieja Selección: " + p1);
+			//System.out.println("Nueva Selección: " + p2);
+			// System.out.println("Vieja Selección: " + p1);
 		});
 	}
-	
-	
+
+
 	public ObservableList<String> observableList(ComboBox<String> comboBox){
 		ObservableList<String> observableList;
 		if(comboBox.getValue() != null) {
@@ -255,28 +267,28 @@ public class TravelBusGUI {
 		}
 
 	}
-	
+
 	@FXML
 	public void deleteRoute(ActionEvent event) {
 		cmbxChooseOriginDepartment.getSelectionModel().clearSelection();
 		cmbxChooseOrigin.getSelectionModel().clearSelection();
 		cmbxChooseDestinationDepartment.getSelectionModel().clearSelection();
 		cmbxChooseDestination.getSelectionModel().clearSelection();
-		
+
 		labelOrigin.setText("");
 		labelDestination.setText("");
-		
+
 		origin.setFill(Color.RED);
 		destiny.setFill(Color.RED);
 	}
 
-	
-	
+
+
 	@FXML
 	public void toBuyTicketWindow(ActionEvent event) throws IOException {
 		AudioClip sound = new AudioClip("file:resources/sounds/click.mp3");
 		sound.play();
-		
+
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Sales.fxml"));
 		fxmlLoader.setController(this);
 		Parent root = fxmlLoader.load();
@@ -285,7 +297,7 @@ public class TravelBusGUI {
 		mainStage.setScene(scene);
 		mainStage.show();
 	}
-	
+
 	public Circle circleId(String id) {
 		boolean stop = false;
 		Circle circle = null;
@@ -301,18 +313,18 @@ public class TravelBusGUI {
 		}
 		return circle;
 	}
-	
+
 	@FXML
 	public void buyTickey(ActionEvent event) {
 
 	}
 
-	
+
 	@FXML
 	public void cancelPurchase(ActionEvent event) throws IOException {
 		AudioClip sound = new AudioClip("file:resources/sounds/click.mp3");
 		sound.play();
-		
+
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MapRoutes.fxml"));
 		fxmlLoader.setController(this);
 		Parent root = fxmlLoader.load();

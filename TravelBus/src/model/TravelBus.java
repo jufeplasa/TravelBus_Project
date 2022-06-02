@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.PriorityQueue;
 import java.util.Stack;
 
 public class TravelBus {
@@ -76,9 +77,42 @@ public class TravelBus {
 		}
 	}
 	
+	public Stack<Ciudad> rutaDijkstra(int inicio, int fina) {
+		int[] distancia = new int[ciudadesList.size()];
+		int[] padre = new int[ciudadesList.size()];
+		boolean[] visto = new boolean[ciudadesList.size()];
+		for (int i = 0; i < ciudadesList.size(); i++) {
+			distancia[i] = 999999;
+			padre[i] = -1;
+			visto[i] = false;
+		}
+		distancia[inicio]=0;
+		Stack<Ciudad> pilaCiudad = new Stack<>();
+		PriorityQueue<Integer> pila = new PriorityQueue<>();
+		pila.add(inicio);
+		while (!pila.isEmpty()) {
+			int u = pila.poll();
+			visto[u] = true;
+			for (int i = 0; i < ciudadesList.size(); i++) {
+				if (this.distancia.get(u).get(i) != 0) {
+					if ((distancia[u] + this.distancia.get(u).get(i))<distancia[i] ) {
+						
+						distancia[i] = distancia[u] + this.distancia.get(u).get(i);
+						padre[i] = u;
+						pila.add(i);
+						if(i==fina) {
+							pilaCiudad.add(ciudadesList.get(u));
+						}
+					}
+				}
+			}
+			
+		}
+		pilaCiudad.add(ciudadesList.get(fina));
+		return pilaCiudad;
+	}
 	
-	
-	public  void leerCyD(String nameFile) {
+	public void leerCyD(String nameFile) {
 		
 		Path filePath = Paths.get(nameFile);
 		try {
@@ -106,22 +140,7 @@ public class TravelBus {
 		}
 		return repeat;
 	}
-	
-	public void establecerRuta(String origin, String destiny){
-		int indexO=getIndexCity(origin);
-		int indexD=getIndexCity(destiny);
-		int valueDistance=distancia.get(indexO).get(indexD);
-		
-		for(int i=0;i<distancia.get(indexO).size();i++) {
-			int value=distancia.get(indexO).get(i)+distancia.get(i).get(indexD);
-			if(value<valueDistance) {
-				valueDistance=value;
-				recorrido.push(ciudadesList.get(i));
-			}
-		}
-		
-	}
-	
+
 	public int getIndexCity(String cityName) {
 		boolean found=false;
 		int index=0;
