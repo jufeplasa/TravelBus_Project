@@ -22,7 +22,8 @@ public class TravelBus {
 	private ArrayList<String> departmentList;
 	private Hashtable<String, String> htCD;
 	private Stack<Ciudad> recorrido;
-	//private ArrayList<ArrayList<String>> dataCostos;
+	private ArrayList<ArrayList<String>> dataCostos;
+	private ArrayList<ArrayList<Integer>> costos;
 	
 	public TravelBus() {
 		dataDistancias=new ArrayList<ArrayList<String>>();
@@ -32,12 +33,14 @@ public class TravelBus {
 		departmentList=new ArrayList<String>();
 		htCD=new Hashtable<String, String>();
 		setRecorrido(new Stack<Ciudad>());
-		//dataCostos=new ArrayList<ArrayList<String>>();
+		dataCostos=new ArrayList<ArrayList<String>>();
+		costos = new ArrayList<ArrayList<Integer>>();
 		dataDistancias=leerArchivo(DATADISTANCIA);
 		leerCyD(DATACIUDADES);
 		crearciudadesList();
 		crearMatrizD();
-		//dataCostos=leerArchivo(DATACOSTOS);
+		dataCostos=leerArchivo(DATACOSTOS);
+		crearMatrizC();
 	}
 	
 	public  ArrayList<ArrayList<String>> leerArchivo(String nameFile) {
@@ -76,13 +79,27 @@ public class TravelBus {
 			distancia.add(temp);
 		}
 	}
-	
+	public void crearMatrizC() {
+		for(int i=0;i<dataCostos.size();i++) {
+			ArrayList<Integer> temp = new ArrayList<>();
+			for(int j=0;j<dataCostos.get(i).size();j++) {
+				String num=dataCostos.get(i).get(j);
+				if(num.isEmpty()||num.equals(" ")) {
+					temp.add(999999);
+				}
+				else {
+					temp.add(Integer.parseInt(num));
+				}
+			}
+			costos.add(temp);
+		}
+	}
 	public Stack<Ciudad> rutaDijkstra(int inicio, int fina) {
 		int[] distancia = new int[ciudadesList.size()];
 		int[] padre = new int[ciudadesList.size()];
 		boolean[] visto = new boolean[ciudadesList.size()];
 		for (int i = 0; i < ciudadesList.size(); i++) {
-			distancia[i] = 999999;
+			distancia[i] = 99999;
 			padre[i] = -1;
 			visto[i] = false;
 		}
@@ -111,7 +128,40 @@ public class TravelBus {
 		pilaCiudad.add(ciudadesList.get(fina));
 		return pilaCiudad;
 	}
-	
+	public Stack<Ciudad> rutaDijkstraCosto(int inicio, int fina) {
+		int[] distancia = new int[ciudadesList.size()];
+		int[] padre = new int[ciudadesList.size()];
+		boolean[] visto = new boolean[ciudadesList.size()];
+		for (int i = 0; i < ciudadesList.size(); i++) {
+			distancia[i] = 999999;
+			padre[i] = -1;
+			visto[i] = false;
+		}
+		distancia[inicio]=0;
+		Stack<Ciudad> pilaCiudad = new Stack<>();
+		PriorityQueue<Integer> pila = new PriorityQueue<>();
+		pila.add(inicio);
+		while (!pila.isEmpty()) {
+			int u = pila.poll();
+			visto[u] = true;
+			for (int i = 0; i < ciudadesList.size(); i++) {
+				if (this.costos.get(u).get(i) != 0) {
+					if ((distancia[u] + this.costos.get(u).get(i))<distancia[i] ) {
+						
+						distancia[i] = distancia[u] + this.costos.get(u).get(i);
+						padre[i] = u;
+						pila.add(i);
+						if(i==fina) {
+							pilaCiudad.add(ciudadesList.get(u));
+						}
+					}
+				}
+			}
+			
+		}
+		pilaCiudad.add(ciudadesList.get(fina));
+		return pilaCiudad;
+	}
 	public void leerCyD(String nameFile) {
 		
 		Path filePath = Paths.get(nameFile);
@@ -161,6 +211,39 @@ public class TravelBus {
 			}
 		}
 	}
+//	public int[] dijkistra(int inicio, int fina) {
+//		int[] distancia = new int[ciudadesList.size()];
+//		int[] padre = new int[ciudadesList.size()];
+//		boolean[] visto = new boolean[ciudadesList.size()];
+//		for (int i = 0; i < ciudadesList.size(); i++) {
+//			distancia[i] = 999999;
+//			padre[i] = -1;
+//			visto[i] = false;
+//		}
+//		distancia[inicio]=0;
+//		Stack<Ciudad> pilaCiudad = new Stack<>();
+//		PriorityQueue<Integer> pila = new PriorityQueue<>();
+//		pilaCiudad.add(ciudadesList.get(inicio));
+//		pila.add(inicio);
+//		while (!pila.isEmpty()) {
+//			int u = pila.poll();
+//			visto[u] = true;
+//			for (int i = 0; i < ciudadesList.size(); i++) {
+//				if (this.distancia.get(u).get(i) != 0) {
+//					if ((distancia[u] + this.distancia.get(u).get(i))<distancia[i] ) {
+//						distancia[i] = distancia[u] + this.distancia.get(u).get(i);
+//						padre[i] = u;
+//						pila.add(i);
+//						pilaCiudad.add(ciudadesList.get(i));
+//						
+//					}
+//				}
+//			}
+//			System.out.println(pilaCiudad);
+//		}
+//		System.out.println(pilaCiudad.toString());
+//		return distancia;
+//	}
 	
 	public ArrayList<String> getCityByDep(String departamento){
 		ArrayList<String> cities=new ArrayList<String>();
@@ -183,14 +266,12 @@ public class TravelBus {
 		return distancia;
 	}
 	
-	
-	
 	public Hashtable<String, String> departCiudad() {
 		return htCD;
 	}
-	/**public static ArrayList<ArrayList<String>> costos() {
+	public ArrayList<ArrayList<String>> costos() {
 		return dataCostos;
-	}**/
+	}
 	public  ArrayList<String> dataCiudades() {
 		return dataCiudadesList;
 	}

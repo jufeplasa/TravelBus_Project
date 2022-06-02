@@ -137,7 +137,17 @@ public class TravelBusGUI {
 
 	@FXML
 	public void calculateCheapestRoute(ActionEvent event) {
-
+		String origen=cmbxChooseOrigin.getSelectionModel().getSelectedItem();
+		String destino=cmbxChooseDestination.getSelectionModel().getSelectedItem();
+		int indexOrigen=travel.getIndexCity(origen);
+		int indexDestino=travel.getIndexCity(destino);
+		Stack<Ciudad> rutaTemp=travel.rutaDijkstraCosto(indexOrigen,indexDestino);
+		for(int i=0;i<rutaTemp.size();i++) {
+			Circle c = (Circle) pane.lookup("#" + rutaTemp.get(i).getCiudad());
+			origin = c;
+			origin.setFill(Color.BLUEVIOLET);
+			labelOrigin.setText(c.getId());
+		}
 	}
 
 
@@ -150,10 +160,10 @@ public class TravelBusGUI {
 		int indexDestino=travel.getIndexCity(destino);
 		Stack<Ciudad> rutaTemp=travel.rutaDijkstra(indexOrigen,indexDestino);
 		for(int i=0;i<rutaTemp.size();i++) {
-			Circle c = (Circle) pane.lookup("#" + rutaTemp.get(i).getCiudad());
-			origin = c;
+			Circle ci = (Circle) pane.lookup("#" + rutaTemp.get(i).getCiudad());
+			origin = ci;
 			origin.setFill(Color.BLUEVIOLET);
-			labelOrigin.setText(c.getId());
+			labelOrigin.setText(ci.getId());
 		}
 	}
 
